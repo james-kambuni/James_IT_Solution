@@ -1,0 +1,39 @@
+
+/* Bootstrap */
+@import './bootstrap.min.css';
+/* @import './bootstrap-grid.min.css';
+@import './bootstrap-grid.css';
+@import './bootstrap-reboot.min.css';
+@import './bootstrap-select.css';
+@import './bootstrap.css'; */
+
+
+/* Site Styles */
+@import './style.css';
+@import './responsive.css';
+@import './colors1.css';
+@import './custom.css';
+/* @import './colors_landing_page.css';
+@import './font-awesome.css';
+@import './font-awesome.min.css';
+@import './hizoom.css'; */
+
+
+
+/* Animations & Effects */
+@import './animate.css';
+@import './cart.css';
+@import './newpreloader.css';
+/* @import './owl.carousel.css';
+@import './owl.carousel.min.css';
+@import './owl.theme.default.css'; */
+
+/* Revolution Slider */
+@import './revolution/settings.css';
+@import './revolution/layers.css';
+@import './revolution/navigation.css';
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
