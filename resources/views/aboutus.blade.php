@@ -129,63 +129,33 @@
     </div>
     <div class="row" style="margin-top: 35px">
       <div class="col-md-8">
-        <div class="full margin_bottom_30">
-          <div class="accordion border_circle">
-            <div class="bs-example">
-              <div class="panel-group" id="accordion">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <p class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><i class="fa fa-bar-chart" aria-hidden="true"></i> Complete Recovery from Local & External Drive<i class="fa fa-angle-down"></i></a> </p>
-                  </div>
-                  <div id="collapseOne" class="panel-collapse collapse in">
-                    <div class="panel-body">
-                      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it 
-                        over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, 
-                        consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <p class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><i class="fa fa-plane"></i> Recovery Photo, Image, Video and Audio<i class="fa fa-angle-down"></i></a> </p>
-                  </div>
-                  <div id="collapseTwo" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it 
-                        over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, 
-                        consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <p class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><i class="fa fa-star"></i> Mobile Phone Recovery<i class="fa fa-angle-down"></i></a> </p>
-                  </div>
-                  <div id="collapseThree" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it 
-                        over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, 
-                        consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <p class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><i class="fa fa-bar-chart" aria-hidden="true"></i> Complete Recovery from Local & External Drive<i class="fa fa-angle-down"></i></a> </p>
-                  </div>
-                  <div id="collapseFour" class="panel-collapse collapse in">
-                    <div class="panel-body">
-                      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it 
-                        over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, 
-                        consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
-                    </div>
-                  </div>
+  <div class="full margin_bottom_30">
+    <div class="accordion border_circle">
+      <div class="bs-example">
+        <div class="panel-group" id="accordion">
+          @foreach($normalServices as $index => $service)
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <p class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ $index }}">
+                    <i class="{{ $service->icon }}" aria-hidden="true"></i> {{ $service->title }}
+                    <i class="fa fa-angle-down"></i>
+                  </a>
+                </p>
+              </div>
+              <div id="collapse{{ $index }}" class="panel-collapse collapse {{ $index === 0 ? 'in' : '' }}">
+                <div class="panel-body">
+                  <p>{{ $service->description }}</p>
                 </div>
               </div>
             </div>
-          </div>
+          @endforeach
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
       <div class="col-md-4">
         <div class="full" style="margin-top: 35px;">
           <h3>Need file recovery?</h3>
@@ -212,151 +182,24 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-8">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="full">
-              <div class="service_blog_inner2">
-                <div class="icon text_align_left"><i class="fa fa-wrench"></i></div>
-                <h4 class="service-heading">Honest Services</h4>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusa ntium dolore mque.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="full">
-              <div class="service_blog_inner2">
-                <div class="icon text_align_left"><i class="fa fa-cog"></i></div>
-                <h4 class="service-heading">Secure payments</h4>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusa ntium dolore mque.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="full">
-              <div class="service_blog_inner2">
-                <div class="icon text_align_left"><i class="fa fa-history"></i></div>
-                <h4 class="service-heading">Expert team</h4>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusa ntium dolore mque.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="full">
-              <div class="service_blog_inner2">
-                <div class="icon text_align_left"><i class="fa fa-heart-o"></i></div>
-                <h4 class="service-heading">Affordable services</h4>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusa ntium dolore mque.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end section -->
-<!-- section -->
-<div class="section padding_layout_1 testmonial_section white_fonts">
-  <div class="container">
+     <div class="col-md-8">
     <div class="row">
-      <div class="col-md-12">
-        <div class="full">
-          <div class="main_heading text_align_left">
-            <h2 style="text-transform: none;">What Clients Say?</h2>
-            <p class="large">Here are testimonials from clients..</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-7">
-        <div class="full">
-          <div id="testimonial_slider" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ul class="carousel-indicators">
-              <li data-target="#testimonial_slider" data-slide-to="0" class="active"></li>
-              <li data-target="#testimonial_slider" data-slide-to="1"></li>
-              <li data-target="#testimonial_slider" data-slide-to="2"></li>
-            </ul>
-            <!-- The slideshow -->
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="testimonial-container">
-                  <div class="testimonial-content"> You guys rock! Thank you for making it painless, pleasant and most of all hassle free! I wish I would have thought of it first. 
-                    I am really satisfied with my first laptop service.</div>
-                  <div class="testimonial-photo"> <img src="images/it_service/client1.jpg" class="img-responsive" alt="#" width="150" height="150"> </div>
-                  <div class="testimonial-meta">
-                    <h4>Maria Anderson</h4>
-                    <span class="testimonial-position">CFO, Tech NY</span> </div>
+        @foreach($aboutServices as $service)
+            <div class="col-md-6">
+                <div class="full">
+                    <div class="service_blog_inner2">
+                        <div class="icon text_align_left">
+                            <i class="fa {{ $service->icon }}"></i>
+                        </div>
+                        <h4 class="service-heading">{{ $service->service }}</h4>
+                        <p>{{ $service->description }}</p>
+                    </div>
                 </div>
-              </div>
-              <div class="carousel-item">
-                <div class="testimonial-container">
-                  <div class="testimonial-content"> You guys rock! Thank you for making it painless, pleasant and most of all hassle free! I wish I would have thought of it first. 
-                    I am really satisfied with my first laptop service.</div>
-                  <div class="testimonial-photo"> <img src="images/it_service/client2.jpg" class="img-responsive" alt="#" width="150" height="150"> </div>
-                  <div class="testimonial-meta">
-                    <h4>Maria Anderson</h4>
-                    <span class="testimonial-position">CFO, Tech NY</span> </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="testimonial-container">
-                  <div class="testimonial-content"> You guys rock! Thank you for making it painless, pleasant and most of all hassle free! I wish I would have thought of it first. 
-                    I am really satisfied with my first laptop service.</div>
-                  <div class="testimonial-photo"> <img src="images/it_service/client3.jpg" class="img-responsive" alt="#" width="150" height="150"> </div>
-                  <div class="testimonial-meta">
-                    <h4>Maria Anderson</h4>
-                    <span class="testimonial-position">CFO, Tech NY</span> </div>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-5">
-        <div class="full"> </div>
-      </div>
+        @endforeach
     </div>
-  </div>
 </div>
-<!-- end section -->
-<!-- section -->
-<div class="section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="full">
-          <div class="contact_us_section">
-            <div class="call_icon"> <img src="images/it_service/phone_icon.png" alt="#" /> </div>
-            <div class="inner_cont">
-              <h2>REQUEST A FREE QUOTE</h2>
-              <p>Get answers and advice from people you want it from.</p>
-            </div>
-            <div class="button_Section_cont"> <a class="btn dark_gray_bt" href="it_contact.html">Contact us</a> </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end section -->
-<!-- section -->
-<div class="section padding_layout_1" style="padding: 50px 0;">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="full">
-          <ul class="brand_list">
-            <li><img src="images/it_service/brand_icon1.png" alt="#" /></li>
-            <li><img src="images/it_service/brand_icon2.png" alt="#" /></li>
-            <li><img src="images/it_service/brand_icon3.png" alt="#" /></li>
-            <li><img src="images/it_service/brand_icon4.png" alt="#" /></li>
-            <li><img src="images/it_service/brand_icon5.png" alt="#" /></li>
-          </ul>
-        </div>
-      </div>
+
     </div>
   </div>
 </div>

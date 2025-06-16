@@ -69,6 +69,7 @@ class CartController extends Controller
                 'message' => $validated['product_name'] . ' added to cart!',
                 'items' => $this->cartService->getCartItems()
             ]);
+            
         } catch (\Exception $e) {
             \Log::error('Cart Add Error: ' . $e->getMessage());
 

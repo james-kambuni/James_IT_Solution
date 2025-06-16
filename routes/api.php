@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\RegionController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,19 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+use App\Models\Region;
+
+// Route::get('/regions/{countyId}', function ($countyId) {
+//     return Region::where('county_id', $countyId)->get();
+// });
+
+
+Route::get('/regions/{county}', [RegionController::class, 'getByCounty']);
+
+Route::get('/regions/{region}/locations', function (Region $region) {
+    return $region->locations()->select('id', 'name', 'shipping_fee')->get();
+});
+

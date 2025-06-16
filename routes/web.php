@@ -19,10 +19,17 @@ use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\UserOrderDetailsController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\MyblogController;
 use App\Http\Controllers\Admin\MyserviceController;
+use App\Http\Controllers\Admin\AboutServiceController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\MpesaCallbackController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+
+
 
 
 /*
@@ -109,6 +116,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
     Route::resource('blogs', MyblogController::class);
     Route::resource('services', App\Http\Controllers\Admin\MyserviceController::class);
+    Route::resource('sliders', \App\Http\Controllers\Admin\SliderController::class);
 
   
     
@@ -160,6 +168,9 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/orders', [UserOrderDetailsController::class, 'index'])->name('user.orders');
     Route::get('/orders/{id}', [UserOrderDetailsController::class, 'show'])->name('user.orders.show');
+    Route::resource('services', App\Http\Controllers\Admin\MyserviceController::class);
+    Route::get('/services/{id}', [ServiceController::class, 'show'])->name('service.show');
+    Route::get('/admin/services/{id}', [MyserviceController::class, 'show'])->name('admin.services.show');
 });
 
 
@@ -171,5 +182,71 @@ Route::post('/mpesa/callback', [MpesaCallbackController::class, 'handle']);
 
 // Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
 Route::get('/blog/{slug}', [\App\Http\Controllers\BlogController::class, 'show'])->name('blog.show');
-Route::resource('services', App\Http\Controllers\Admin\MyserviceController::class);
-Route::get('/services/{id}', [ServiceController::class, 'show'])->name('service.show');
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/about', [AboutUsController::class, 'index'])->name('about.index');
+    Route::post('/about', [AboutUsController::class, 'update'])->name('about.update');
+});
+
+Route::put('/admin/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
+
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::get('about/about-services', [AboutServiceController::class, 'index'])->name('admin.about.about-services.index');
+    Route::post('about/about-services', [AboutServiceController::class, 'store'])->name('admin.about.about-services.store');
+    Route::get('about/about-services/{aboutService}/edit', [AboutServiceController::class, 'edit'])->name('admin.about.about-services.edit');
+    Route::put('about/about-services/{aboutService}', [AboutServiceController::class, 'update'])->name('admin.about.about-services.update');
+    Route::delete('about/about-services/{aboutService}', [AboutServiceController::class, 'destroy'])->name('admin.about.about-services.destroy');
+});
+
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class)->names('admin.categories');
+});
+Route::get('/{product}', [ShopController::class, 'show'])->name('show');
+
+Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+Route::post('/admin/place-order', [OrderController::class, 'placeOrder'])->name('admin.order.place');
+// Route::get('/admin/delivery', [App\Http\Controllers\Admin\OrderController::class, 'delivery'])->name('admin.orders.delivery');
+
+
+Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
+    Route::resource('counties', \App\Http\Controllers\Admin\CountyController::class);
+    Route::resource('regions', \App\Http\Controllers\Admin\RegionController::class);
+});
+
+// Route::resource('admin/locations', \App\Http\Controllers\Admin\LocationController::class)->names('admin.locations');
+// Route::get('/order/thank-you', function () {
+//     return view('thankyou');
+// })->name('orders.thankyou');
+// Route::get('/order/receipt/{id}', [OrderController::class, 'showReceipt'])->name('order.receipt');
+// // Route::get('/orders/{order}/receipt', [OrderController::class, 'downloadReceipt'])->name('orders.receipt');
+// Route::get('/orders/{order}/receipt', [OrderController::class, 'downloadReceipt'])->name('orders.receipt.download');
+// Route::post('/admin/place-order', [OrderController::class, 'placeOrder'])->name('admin.place-order');
+
+
+// Route::get('/order/thank-you', [ThankyouController::class, 'index'])->name('orders.thankyou');
+// Route::get('/admin/orders/{order}/receipt/download', [\App\Http\Controllers\Admin\OrderController::class, 'downloadReceipt'])
+//     ->name('orders.receipt.download');
+
+// Resource route for admin/locations
+Route::resource('admin/locations', LocationController::class)->names('admin.locations');
+
+// Show thank you page (Controller-based route preferred)
+Route::get('/order/thank-you', [ThankyouController::class, 'index'])->name('orders.thankyou');
+
+// Show receipt in browser (HTML)
+Route::get('/order/receipt/{id}', [OrderController::class, 'showReceipt'])->name('order.receipt');
+
+// Download receipt as PDF (public side)
+Route::get('/orders/{order}/receipt', [OrderController::class, 'downloadReceipt'])->name('orders.receipt.download');
+
+// Admin route to place an order (must be POST)
+Route::post('/admin/place-order', [AdminOrderController::class, 'placeOrder'])->name('admin.place-order');
+
+// Admin PDF receipt download (if needed)
+Route::get('/admin/orders/{order}/receipt/download', [AdminOrderController::class, 'downloadReceipt'])
+    ->name('admin.orders.receipt.download');
+
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('orders/delivery', [OrderController::class, 'delivery'])->name('orders.delivery');
+// });
+Route::get('orders/delivery', [App\Http\Controllers\Admin\OrderController::class, 'delivery'])->name('orders.delivery');

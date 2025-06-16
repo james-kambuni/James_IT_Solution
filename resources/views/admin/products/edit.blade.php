@@ -8,4 +8,5 @@
         @method('PUT')
         @include('admin.products.form', ['product' => $product])
     </form>
+
 @endsection

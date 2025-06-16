@@ -188,9 +188,10 @@
         <!-- START REVOLUTION SLIDER 5.0.7 auto mode -->
         <div id="rev_slider_4_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.0.7">
           <ul>
-            <li data-index="rs-1812" data-transition="zoomin" data-slotamount="7"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="images/it_service/slide1.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Computer Services" data-description="">
+             @foreach ($sliders as $slider)
+            <li  data-index="rs-1812" data-transition="zoomin" data-slotamount="7"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="{{ asset('storage/'.$slider->image) }}"  data-rotate="0"  data-saveperformance="off"  data-title="Computer Services" data-description="">
               <!-- MAIN IMAGE -->
-              <img src="images/it_service/slide1.jpg"  alt="#"  data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+              <img src="{{ asset('storage/'.$slider->image) }}"  alt="#"  data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
               <!-- LAYERS -->
               <!-- LAYER NR. BG -->
               <div class="tp-caption tp-shape tp-shapewrapper   rs-parallaxlevel-0" 
@@ -244,7 +245,7 @@
                               data-splitout="none" 
                               data-responsive_offset="on" 
                               data-elementdelay="0.05" 
-                              style="z-index: 6; white-space: nowrap;">Computer Services </div>
+                              style="z-index: 6; white-space: nowrap;">{{ $slider->title }}</div>
               <!-- LAYER NR. 3 -->
               <div class="tp-caption NotGeneric-SubTitle   tp-resizeme rs-parallaxlevel-0" 
                               id="slide-18-layer-412" 
@@ -262,160 +263,9 @@
                               data-splitin="none" 
                               data-splitout="none" 
                               data-responsive_offset="on" 
-                              style="z-index: 7; white-space: nowrap;">Available On It.Next </div>
+                              style="z-index: 7; white-space: nowrap;">{{ $slider->subtitle }} </div>
             </li>
-            <li data-index="rs-181" data-transition="zoomin" data-slotamount="7"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="images/it_service/slide2.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Easy To Use & Customize" data-description="">
-              <!-- MAIN IMAGE -->
-              <img src="images/it_service/slide2.jpg"  alt=""  data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
-              <!-- LAYERS -->
-              <!-- LAYER NR. BG -->
-              <div class="tp-caption tp-shape tp-shapewrapper   rs-parallaxlevel-0" 
-                              id="slide-270-layer-101" 
-                              data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
-                              data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" 
-                              data-width="full"
-                              data-height="full"
-                              data-whitespace="nowrap"
-                              data-transform_idle="o:1;"
-                              data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;" 
-                              data-transform_out="s:300;s:300;" 
-                              data-start="750" 
-                              data-basealign="slide" 
-                              data-responsive_offset="on" 
-                              data-responsive="off"
-                              style="z-index: 5;background-color:rgba(0, 0, 0, 0.25);border-color:rgba(0, 0, 0, 0.50);"> </div>
-              <!-- LAYER NR. 1 -->
-              <div class="tp-caption tp-shape tp-shapewrapper   tp-resizeme rs-parallaxlevel-0" 
-                              id="slide-18-layer-91" 
-                              data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
-                              data-y="['middle','middle','middle','middle']" data-voffset="['15','15','15','15']" 
-                              data-width="500"
-                              data-height="140"
-                              data-whitespace="nowrap"
-                              data-transform_idle="o:1;"
-                              data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power4.easeInOut;" 
-                              data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
-                              data-mask_in="x:0px;y:0px;" 
-                              data-mask_out="x:inherit;y:inherit;" 
-                              data-start="2000" 
-                              data-responsive_offset="on" 
-                              style="z-index: 5;background-color:rgba(29, 29, 29, 0.85);border-color:rgba(0, 0, 0, 0.50);"> </div>
-              <!-- LAYER NR. 2 -->
-              <div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-0" 
-                              id="slide-18-layer-11" 
-                              data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
-                              data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" 
-                              data-fontsize="['70','70','70','35']"
-                              data-lineheight="['70','70','70','50']"
-                              data-width="none"
-                              data-height="none"
-                              data-whitespace="nowrap"
-                              data-transform_idle="o:1;"
-                              data-transform_in="y:[-100%];z:0;rZ:35deg;sX:1;sY:1;skX:0;skY:0;s:2000;e:Power4.easeInOut;" 
-                              data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
-                              data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" 
-                              data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
-                              data-start="1000" 
-                              data-splitin="chars" 
-                              data-splitout="none" 
-                              data-responsive_offset="on" 
-                              data-elementdelay="0.05" 
-                              style="z-index: 6; white-space: nowrap;">Fast & Affordable </div>
-              <!-- LAYER NR. 3 -->
-              <div class="tp-caption NotGeneric-SubTitle   tp-resizeme rs-parallaxlevel-0" 
-                              id="slide-18-layer-41" 
-                              data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
-                              data-y="['middle','middle','middle','middle']" data-voffset="['52','51','51','31']" 
-                              data-width="none"
-                              data-height="none"
-                              data-whitespace="nowrap"
-                              data-transform_idle="o:1;"
-                              data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" 
-                              data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
-                              data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
-                              data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
-                              data-start="1500" 
-                              data-splitin="none" 
-                              data-splitout="none" 
-                              data-responsive_offset="on" 
-                              style="z-index: 7; white-space: nowrap;">Available On It.Next </div>
-            </li>
-            <li data-index="rs-18" data-transition="zoomin" data-slotamount="7"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="images/it_service/slide3.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Perfectly Responsive" data-description="">
-              <!-- MAIN IMAGE -->
-              <img src="images/it_service/slide3.jpg"  alt=""  data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
-              <!-- LAYERS -->
-              <!-- LAYER NR. BG -->
-              <div class="tp-caption tp-shape tp-shapewrapper   rs-parallaxlevel-0" 
-                              id="slide-270-layer-10" 
-                              data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
-                              data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" 
-                              data-width="full"
-                              data-height="full"
-                              data-whitespace="nowrap"
-                              data-transform_idle="o:1;"
-                              data-transform_in="opacity:0;s:1500;e:Power3.easeInOut;" 
-                              data-transform_out="s:300;s:300;" 
-                              data-start="750" 
-                              data-basealign="slide" 
-                              data-responsive_offset="on" 
-                              data-responsive="off"
-                              style="z-index: 5;background-color:rgba(0, 0, 0, 0.25);border-color:rgba(0, 0, 0, 0.50);"> </div>
-              <!-- LAYER NR. 1 -->
-              <div class="tp-caption tp-shape tp-shapewrapper   tp-resizeme rs-parallaxlevel-0" 
-                              id="slide-18-layer-9" 
-                              data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
-                              data-y="['middle','middle','middle','middle']" data-voffset="['15','15','15','15']" 
-                              data-width="500"
-                              data-height="140"
-                              data-whitespace="nowrap"
-                              data-transform_idle="o:1;"
-                              data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power4.easeInOut;" 
-                              data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
-                              data-mask_in="x:0px;y:0px;" 
-                              data-mask_out="x:inherit;y:inherit;" 
-                              data-start="2000" 
-                              data-responsive_offset="on" 
-                              style="z-index: 5;background-color:rgba(29, 29, 29, 0.85);border-color:rgba(0, 0, 0, 0.50);"> </div>
-              <!-- LAYER NR. 2 -->
-              <div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-0" 
-                              id="slide-18-layer-1" 
-                              data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
-                              data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" 
-                              data-fontsize="['70','70','70','35']"
-                              data-lineheight="['70','70','70','50']"
-                              data-width="none"
-                              data-height="none"
-                              data-whitespace="nowrap"
-                              data-transform_idle="o:1;"
-                              data-transform_in="y:[-100%];z:0;rZ:35deg;sX:1;sY:1;skX:0;skY:0;s:2000;e:Power4.easeInOut;" 
-                              data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
-                              data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" 
-                              data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
-                              data-start="1000" 
-                              data-splitin="chars" 
-                              data-splitout="none" 
-                              data-responsive_offset="on" 
-                              data-elementdelay="0.05" 
-                              style="z-index: 6; white-space: nowrap;">We Will Fix It </div>
-              <!-- LAYER NR. 3 -->
-              <div class="tp-caption NotGeneric-SubTitle   tp-resizeme rs-parallaxlevel-0" 
-                              id="slide-18-layer-4" 
-                              data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
-                              data-y="['middle','middle','middle','middle']" data-voffset="['52','51','51','31']" 
-                              data-width="none"
-                              data-height="none"
-                              data-whitespace="nowrap"
-                              data-transform_idle="o:1;"
-                              data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" 
-                              data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
-                              data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
-                              data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
-                              data-start="1500" 
-                              data-splitin="none" 
-                              data-splitout="none" 
-                              data-responsive_offset="on" 
-                              style="z-index: 7; white-space: nowrap;">Available On It.Next </div>
-            </li>
+            @endforeach
           </ul>
           <div class="tp-static-layers"></div>
         </div>
@@ -438,102 +288,50 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-        <div class="full text_align_center margin_bottom_30">
-          <div class="center">
-            <div class="icon"> <img src="images/it_service/i1.png" alt="#" /> </div>
-          </div>
-          <h4 class="theme_color">Data recovery</h4>
-          <p>Perspiciatis eos quos totam cum minima aut!</p>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-        <div class="full text_align_center margin_bottom_30">
-          <div class="center">
-            <div class="icon"> <img src="images/it_service/i2.png" alt="#" /> </div>
-          </div>
-          <h4 class="theme_color">Computer repair</h4>
-          <p>Perspiciatis eos quos totam cum minima aut!</p>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-        <div class="full text_align_center margin_bottom_30">
-          <div class="center">
-            <div class="icon"> <img src="images/it_service/i3.png" alt="#" /> </div>
-          </div>
-          <h4 class="theme_color">Mobile service</h4>
-          <p>Perspiciatis eos quos totam cum minima aut!</p>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-        <div class="full text_align_center margin_bottom_30 margin_0">
-          <div class="center">
-            <div class="icon"> <img src="images/it_service/i4.png" alt="#" /> </div>
-          </div>
-          <h4 class="theme_color">Network solutions</h4>
-          <p>Perspiciatis eos quos totam cum minima aut!</p>
-        </div>
-      </div>
+     @foreach($aboutServices as $service)
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="full">
+                    <div class="service_blog_inner2">
+                        <div class="icon">
+                            <i class="fa {{ $service->icon }}"></i>
+                        </div>
+                        <h4 class="service-heading">{{ $service->service }}</h4>
+                        <p>{{ $service->description }}</p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
     </div>
+
     <div class="row" style="margin-top: 35px">
       <div class="col-md-8">
-        <div class="full margin_bottom_30">
-          <div class="accordion border_circle">
-            <div class="bs-example">
-              <div class="panel-group" id="accordion">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <p class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><i class="fa fa-bar-chart" aria-hidden="true"></i> Complete Recovery from Local & External Drive<i class="fa fa-angle-down"></i></a> </p>
-                  </div>
-                  <div id="collapseOne" class="panel-collapse collapse in">
-                    <div class="panel-body">
-                      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it 
-                        over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, 
-                        consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <p class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><i class="fa fa-plane"></i> Recovery Photo, Image, Video and Audio<i class="fa fa-angle-down"></i></a> </p>
-                  </div>
-                  <div id="collapseTwo" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it 
-                        over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, 
-                        consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <p class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><i class="fa fa-star"></i> Mobile Phone Recovery<i class="fa fa-angle-down"></i></a> </p>
-                  </div>
-                  <div id="collapseThree" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it 
-                        over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, 
-                        consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <p class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><i class="fa fa-bar-chart" aria-hidden="true"></i> Complete Recovery from Local & External Drive<i class="fa fa-angle-down"></i></a> </p>
-                  </div>
-                  <div id="collapseFour" class="panel-collapse collapse in">
-                    <div class="panel-body">
-                      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it 
-                        over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, 
-                        consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. </p>
-                    </div>
-                  </div>
+  <div class="full margin_bottom_30">
+    <div class="accordion border_circle">
+      <div class="bs-example">
+        <div class="panel-group" id="accordion">
+          @foreach($normalServices as $index => $service)
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <p class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ $index }}">
+                    <i class="{{ $service->icon }}" aria-hidden="true"></i> {{ $service->title }}
+                    <i class="fa fa-angle-down"></i>
+                  </a>
+                </p>
+              </div>
+              <div id="collapse{{ $index }}" class="panel-collapse collapse {{ $index === 0 ? 'in' : '' }}">
+                <div class="panel-body">
+                  <p>{{ $service->description }}</p>
                 </div>
               </div>
             </div>
-          </div>
+          @endforeach
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
       <div class="col-md-4">
         <div class="full" style="margin-top: 35px;">
           <h3>Need file recovery?</h3>
@@ -566,6 +364,7 @@
     <div class="row">
       @foreach($products as $product)
         <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4">
+          <a href="{{ route('show', $product->id) }}" class="text-decoration-none text-dark">
           <div class="card h-100">
             <div class="product_img text-center">
               <img class="img-fluid" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
@@ -575,13 +374,14 @@
               <p class="card-text">Amount Ksh {{ number_format($product->price, 2) }}</p>
             <!-- Stock status -->
               <a @if($product->in_stock === 1)
-              <span class="badge bg-success" style="color: black;">In Stock</span>
+              <span class="badge bg-success" style="color: white;">In Stock</span>
               @else
-             <span class="badge bg-danger" style="color: black;">Out of Stock</span>
-              @endif></a>
+             <span class="badge bg-danger" style="color: white;">Out of Stock</span>
+              @endif</a></br>
               @include('cart.partials.add-to-cart', ['product' => $product])
             </div>
           </div>
+          </a>
         </div>
       @endforeach
     </div>
@@ -643,8 +443,8 @@
       <div class="col-md-12">
         <div class="full">
           <div class="main_heading text_align_left">
-            <h2 style="text-transform: none;">What Clients Say?</h2>
-            <p class="large">Here are testimonials from clients..</p>
+            <h2 style="text-transform: none;">Some of our services?</h2>
+            <p class="large">We offers the following services among many more others...</p>
           </div>
         </div>
       </div>
@@ -661,37 +461,25 @@
             </ul>
             <!-- The slideshow -->
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="testimonial-container">
-                  <div class="testimonial-content"> You guys rock! Thank you for making it painless, pleasant and most of all hassle free! I wish I would have thought of it first. 
-                    I am really satisfied with my first laptop service. </div>
-                  <div class="testimonial-photo"> <img src="images/it_service/client1.jpg" class="img-responsive" alt="#" width="150" height="150"> </div>
-                  <div class="testimonial-meta">
-                    <h4>Maria Anderson</h4>
-                    <span class="testimonial-position">CFO, Tech NY</span> </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="testimonial-container">
-                  <div class="testimonial-content"> You guys rock! Thank you for making it painless, pleasant and most of all hassle free! I wish I would have thought of it first. 
-                    I am really satisfied with my first laptop service. </div>
-                  <div class="testimonial-photo"> <img src="images/it_service/client2.jpg" class="img-responsive" alt="#" width="150" height="150"> </div>
-                  <div class="testimonial-meta">
-                    <h4>Maria Anderson</h4>
-                    <span class="testimonial-position">CFO, Tech NY</span> </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="testimonial-container">
-                  <div class="testimonial-content"> You guys rock! Thank you for making it painless, pleasant and most of all hassle free! I wish I would have thought of it first. 
-                    I am really satisfied with my first laptop service. </div>
-                  <div class="testimonial-photo"> <img src="images/it_service/client3.jpg" class="img-responsive" alt="#" width="150" height="150"> </div>
-                  <div class="testimonial-meta">
-                    <h4>Maria Anderson</h4>
-                    <span class="testimonial-position">CFO, Tech NY</span> </div>
-                </div>
-              </div>
-            </div>
+  @foreach($blogServices as $index => $service)
+    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+      <div class="testimonial-container">
+        <div class="testimonial-meta">
+          <h4>{{ $service->title }}</h4>
+          <span class="testimonial-position">{{ $service->subtitle ?? 'Blog Service' }}</span>
+        </div>
+        
+        <div class="testimonial-photo">
+          <img src="{{ asset('storage/' . $service->image) }}" class="img-responsive" alt="{{ $service->title }}" width="150" height="150">
+        </div>
+        <div class="testimonial-content">
+          {{ Str::limit($service->description, 200) }}
+        </div>
+      </div>
+    </div>
+  @endforeach
+</div>
+
           </div>
         </div>
       </div>
@@ -711,10 +499,10 @@
           <div class="contact_us_section">
             <div class="call_icon"> <img src="images/it_service/phone_icon.png" alt="#" /> </div>
             <div class="inner_cont">
-              <h2>REQUEST A FREE QUOTE</h2>
-              <p>Get answers and advice from people you want it from.</p>
+              <h2>Contact us today!</h2>
+              <p>We are ready to serve you</p>
             </div>
-            <div class="button_Section_cont"> <a class="btn dark_gray_bt" href="it_contact.html">Contact us</a> </div>
+            <div class="button_Section_cont"> <a class="btn dark_gray_bt" href="{{ url('/contact') }}">Contact us</a> </div>
           </div>
         </div>
       </div>
@@ -722,25 +510,7 @@
   </div>
 </div>
 <!-- end section -->
-<!-- section -->
-<div class="section padding_layout_1" style="padding: 50px 0;">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="full">
-          <ul class="brand_list">
-            <li><img src="images/it_service/brand_icon1.png" alt="#" /></li>
-            <li><img src="images/it_service/brand_icon2.png" alt="#" /></li>
-            <li><img src="images/it_service/brand_icon3.png" alt="#" /></li>
-            <li><img src="images/it_service/brand_icon4.png" alt="#" /></li>
-            <li><img src="images/it_service/brand_icon5.png" alt="#" /></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end section -->
+
 <!-- Modal -->
 <div class="modal fade" id="search_bar" role="dialog">
   <div class="modal-dialog">
@@ -799,26 +569,47 @@
   });
 </script>
 
-@include('ecart')
+<!-- Cart Icon Button (Trigger) -->
 <div id="cart-icon" onclick="toggleCart()">
-  🛒 <span id="cart-count">0</span>
+  🛒 <span id="cart-count" class="cart-count">0</span>
 </div>
 
-<!-- Shopping Cart -->
-<div id="shopping-cart">
-  <div class="cart-header">
-    <h3>Your Cart</h3>
-    <button onclick="toggleCart()">Close</button>
-  </div>
-  <div id="cart-items"></div>
-  <div class="cart-total">
-    Total: Ksh<span id="cart-total">0.00</span>
-    <div style="margin-top: 10px;">
-      <a href="{{ route('cart') }}" class="btn btn-primary">View Cart</a>
-      <a href="{{ route('checkout') }}" class="btn btn-success">Checkout</a>
+<!-- Cart Modal -->
+<!-- Cart Backdrop -->
+<div id="cart-backdrop" onclick="closeCartOnOutsideClick(event)">
+  <!-- Cart Modal -->
+  <div id="shopping-cart" onclick="event.stopPropagation();">
+    <div class="cart-header">
+      <h5 class="mb-0">🛒 My Cart</h5>
+      <button class="close-btn" onclick="toggleCart()"><i class="fa fa-times"></i></button>
+    </div>
+    <hr>
+
+    <div id="cart-items">
+      <div class="cart-item">
+        <img src="https://via.placeholder.com/60" alt="Sample">
+        <div>
+          <div><strong>Sample Product</strong></div>
+          <div>Ksh 1000 x 1</div>
+        </div>
+        <button class="btn btn-outline-danger btn-sm ms-2">Remove</button>
+      </div>
+    </div>
+
+    <div class="cart-total mt-3">
+      <div class="d-flex justify-content-between mb-3">
+        <strong>Total:</strong>
+        <span>Ksh <span id="cart-total">1000.00</span></span>
+      </div>
+      <div class="d-flex gap-2">
+        <a href="{{ route('cart') }}" class="btn btn-outline-primary btn-sm flex-fill">View Cart</a>
+        <a href="{{ route('checkout') }}" class="btn btn-success btn-sm flex-fill">Checkout</a>
+      </div>
     </div>
   </div>
 </div>
+
+
 <script>
   // Function to toggle cart visibility
   function toggleCart() {
@@ -865,7 +656,10 @@
         <div>
           <h5>${item.name}</h5>
           <p>Ksh${item.price} x ${item.quantity} = Ksh${itemTotal.toFixed(2)}</p>
-          <button onclick="removeFromCart(${item.id})">Remove</button>
+          <button class="remove-btn" onclick="removeFromCart(${item.id})">
+              <i class="fa fa-trash-o" style="color:white;"></i> Remove
+          </button>
+
         </div>
       `;
       cartItemsElement.appendChild(itemElement);
@@ -873,7 +667,10 @@
     
     // Update total and count
     cartTotalElement.textContent = parseFloat(total).toFixed(2);
-    cartCountElement.textContent = itemCount;
+    document.querySelectorAll('.cart-count, #cart-count').forEach(el => {
+    el.textContent = itemCount;
+});
+
   }
 
   // Load initial cart count when page loads
@@ -881,6 +678,21 @@
     fetchCartData();
   });
 </script>
+
+
+<script>
+  function toggleCart() {
+    const backdrop = document.getElementById('cart-backdrop');
+    backdrop.style.display = (backdrop.style.display === 'flex') ? 'none' : 'flex';
+  }
+
+  function closeCartOnOutsideClick(event) {
+    // Close cart when clicking outside the cart box
+    document.getElementById('cart-backdrop').style.display = 'none';
+  }
+</script>
+
+
 <script>
     jQuery(document).ready(function () {
         jQuery("#rev_slider_4_1").show().revolution({

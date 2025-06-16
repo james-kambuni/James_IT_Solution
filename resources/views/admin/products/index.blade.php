@@ -17,7 +17,9 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Price</th>
+                <th>Category</th>
                 <th>Image</th>
+                <th>Description</th>
                 <th>In Stock</th>
                 <th>Actions</th>
             </tr>
@@ -28,7 +30,9 @@
                 <td>{{ $loop->iteration + ($products->currentPage() - 1) * $products->perPage() }}</td>
                 <td>{{ $product->name }}</td>
                 <td>KES {{ number_format($product->price, 2) }}</td>
+                <td>{{ $product->category->name ?? 'N/A' }}</td>
                  <td><img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"width="60" height="60"></td>
+                 <td>{{ $product->description }}</td>
                 <td>{{ $product->in_stock ? 'Yes' : 'No' }}</td>
                 <td>
                     <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-sm btn-warning">Edit</a>
@@ -45,6 +49,8 @@
         @endforelse
         </tbody>
     </table>
-
-    {{ $products->links() }}
+<div class="d-flex justify-content-center mt-4">
+{{ $products->links() }}
+</div>
+    
 @endsection

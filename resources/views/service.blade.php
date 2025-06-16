@@ -152,10 +152,9 @@
         </div>
     @endforeach
 </div>
-<div class="mt-6" style="margin-left: 45%;">
+   <div class="mt-4 pagination-wrapper">
     {{ $serviceBlogs->links() }}
 </div>
-
   </div>
 </div>
 

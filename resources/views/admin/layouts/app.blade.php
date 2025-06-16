@@ -52,14 +52,27 @@
         <a href="{{ route('admin.contacts') }}" class="{{ request()->routeIs('admin.contacts') ? 'active' : '' }}">
             <i class="fa fa-address-book"></i> Contacts
         </a>
+         <a href="{{ route('admin.about.index') }}" class="{{ request()->routeIs('admin.about') ? 'active' : '' }}">
+            <i class="fas fa-box"></i> About
+        </a>
+         <a href="{{ route('admin.about.about-services.index') }}" class="{{ request()->routeIs('admin.about-services') ? 'active' : '' }}">
+            <i class="fa fa-info-circle"></i> About Services
+        </a>
         <a href="{{ route('admin.products.index') }}" class="{{ request()->routeIs('admin.products.*') ? 'active' : '' }}">
-            <i class="fas fa-box"></i> Products
+            <i class="fa fa-product-hunt"></i> Products
+        </a>
+        <a href="{{ route('admin.categories.index') }}" class="{{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
+            <i class="fa-solid fa-bookmark"></i> Products Categories
         </a>
         <a href="{{ route('admin.orders.index') }}" class="{{ request()->routeIs('admin.orders') ? 'active' : '' }}">
             <i class="fas fa-shopping-cart"></i> Orders
         </a>
              <a href="{{ route('admin.blogs.index') }}" class="{{ request()->routeIs('admin.blogs') ? 'active' : '' }}">
             <i class="fa-solid fa-blog"></i> Blogs
+        </a>
+        </a>
+             <a href="{{ route('admin.sliders.index') }}" class="{{ request()->routeIs('admin.sliders') ? 'active' : '' }}">
+            <i class="fa-solid fa-sliders"></i> Sliders
         </a>
         <a href="{{ route('services.index') }}" class="{{ request()->routeIs('admin.services') ? 'active' : '' }}">
             <i class="fa fa-wrench" aria-hidden="true"></i> Services

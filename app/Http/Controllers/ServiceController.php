@@ -16,9 +16,8 @@ class ServiceController extends Controller
 public function show($id)
 {
     $service = Service::findOrFail($id);
-    return view('services.show', compact('service'));
+    $serviceBlogs = Service::where('type', 'blog')->latest()->get();
+    return view('services.show', compact('service', 'serviceBlogs'));
 }
-
-
 
 }

@@ -25,71 +25,14 @@
 <link rel="stylesheet" href="css/colors1.css" />
 <!-- custom css -->
 <link rel="stylesheet" href="css/custom.css" />
+<link rel="stylesheet" href="css/cart.css" />
 <!-- wow Animation css -->
 <link rel="stylesheet" href="css/animate.css" />
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
-      <style>
-        /* Shopping Cart Styles */
-        #shopping-cart {
-          position: fixed;
-          top: 100px;
-          right: 20px;
-          width: 350px;
-          background: white;
-          border: 1px solid #ddd;
-          padding: 15px;
-          box-shadow: 0 0 10px rgba(0,0,0,0.1);
-          z-index: 1000;
-          display: none;
-        }
-        
-        .cart-item {
-          display: flex;
-          margin-bottom: 10px;
-          padding-bottom: 10px;
-          border-bottom: 1px solid #eee;
-        }
-        
-        .cart-item img {
-          margin-right: 10px;
-        }
-        
-        .cart-header {
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 15px;
-        }
-        
-        .cart-total {
-          font-weight: bold;
-          margin-top: 10px;
-          text-align: right;
-        }
-        
-        #cart-icon {
-          position: fixed;
-          top: 150px;
-          right: 20px;
-          background: #333;
-          color: white;
-          padding: 10px 15px;
-          border-radius: 50%;
-          cursor: pointer;
-          z-index: 999;
-        }
-        
-        #cart-count {
-          background: red;
-          color: white;
-          border-radius: 50%;
-          padding: 2px 6px;
-          font-size: 12px;
-          margin-left: 5px;
-        }
-      </style>
+
 </head>
 <body id="default_theme" class="it_shop_list">
 <!-- loader -->
@@ -171,28 +114,32 @@
         <div class="row">
           @foreach($products as $product)
         <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4">
-          <div class="card h-100">
-            <div class="product_img text-center">
-              <img class="img-fluid" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
-            </div>
-            <div class="card-body text-center">
-              <h5 class="card-title">{{ $product->name }}</h5>
-              <p class="card-text">Amount Ksh {{ number_format($product->price, 2) }}</p>
-            <!-- Stock status -->
-              <a @if($product->in_stock === 1)
-              <span class="badge bg-success" style="color: black;">In Stock</span>
-              @else
-             <span class="badge bg-danger" style="color: black;">Out of Stock</span>
-              @endif></a>
-              @include('cart.partials.add-to-cart', ['product' => $product])
-            </div>
-          </div>
-        </div>
+  <a href="{{ route('show', $product->id) }}" class="text-decoration-none text-dark">
+  <div class="card h-100">
+    <div class="product_img text-center">
+      <img class="img-fluid" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+    </div>
+    <div class="card-body text-center">
+      <h5 class="card-title">{{ $product->name }}</h5>
+      <p class="card-text">Amount Ksh {{ number_format($product->price, 2) }}</p>
+      @if($product->in_stock)
+        <span class="badge bg-success" style="color: black;">In Stock</span>
+      @else
+        <span class="badge bg-danger" style="color: black;">Out of Stock</span>
+      @endif
+        @include('cart.partials.add-to-cart', ['product' => $product])
+    </div>
+  </div>
+</a>
+
+</div>
       @endforeach
         </div>
-        <div class="d-flex justify-content-center mt-4">
-    {{ $products->links('pagination::bootstrap-5') }}
-      </div>
+     <div class="mt-4 pagination-wrapper">
+    {{ $products->links() }}
+</div>
+
+    
       </div>
       @stack('scripts')
 
@@ -213,18 +160,22 @@
           </div>
           
           <!-- Services section -->
-          <div class="side_bar_blog">
-            <h4>OUR SERVICE</h4>
-            <div class="categary">
-              <ul>
-                <li><a href="it_data_recovery.html"><i class="fa fa-angle-right"></i> Data recovery</a></li>
-                <li><a href="it_computer_repair.html"><i class="fa fa-angle-right"></i> Computer repair</a></li>
-                <li><a href="it_mobile_service.html"><i class="fa fa-angle-right"></i> Mobile service</a></li>
-                <li><a href="it_network_solution.html"><i class="fa fa-angle-right"></i> Network solutions</a></li>
-                <li><a href="it_techn_support.html"><i class="fa fa-angle-right"></i> Technical support</a></li>
-              </ul>
-            </div>
-          </div>
+     <div class="side_bar_blog">
+    <h4>OUR SERVICES</h4>
+    <div class="categary">
+        <ul>
+            @foreach($serviceBlogs as $service)
+                <li>
+                    <a href="{{ route('service.show', $service->id) }}">
+                        <i class="fa fa-angle-right"></i> {{ $service->title }}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+</div>
+
+
         </div>
       </div>
     </div>
@@ -268,6 +219,8 @@
 <script src="js/menumaker.js"></script>
 <!-- wow animation -->
 <script src="js/wow.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 <!-- custom js -->
 <script src="js/custom.js"></script>
 <script src="js/cart.js"></script>
@@ -283,25 +236,48 @@
 <script src="revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
 <script src="revolution/js/extensions/revolution.extension.video.min.js"></script>
 <!-- end google map js -->
+
+<!-- Cart Icon Button (Trigger) -->
 <div id="cart-icon" onclick="toggleCart()">
-  🛒 <span id="cart-count">0</span>
+  🛒 <span id="cart-count" class="cart-count">0</span>
 </div>
-@include('ecart')
-<!-- Shopping Cart -->
-<div id="shopping-cart">
-  <div class="cart-header">
-    <h3>Your Cart</h3>
-    <button onclick="toggleCart()">Close</button>
-  </div>
-  <div id="cart-items"></div>
-  <div class="cart-total">
-    Total: Ksh<span id="cart-total">0.00</span>
-    <div style="margin-top: 10px;">
-      <a href="{{ route('cart') }}" class="btn btn-primary">View Cart</a>
-      <a href="{{ route('checkout') }}" class="btn btn-success">Checkout</a>
+
+<!-- Cart Modal -->
+<!-- Cart Backdrop -->
+<div id="cart-backdrop" onclick="closeCartOnOutsideClick(event)">
+  <!-- Cart Modal -->
+  <div id="shopping-cart" onclick="event.stopPropagation();">
+    <div class="cart-header">
+      <h5 class="mb-0">🛒 My Cart</h5>
+      <button class="close-btn" onclick="toggleCart()"><i class="fa fa-times"></i></button>
+    </div>
+    <hr>
+
+    <div id="cart-items">
+      <div class="cart-item">
+        <img src="https://via.placeholder.com/60" alt="Sample">
+        <div>
+          <div><strong>Sample Product</strong></div>
+          <div>Ksh 1000 x 1</div>
+        </div>
+        <button class="btn btn-outline-danger btn-sm ms-2">Remove</button>
+      </div>
+    </div>
+
+    <div class="cart-total mt-3">
+      <div class="d-flex justify-content-between mb-3">
+        <strong>Total:</strong>
+        <span>Ksh <span id="cart-total">1000.00</span></span>
+      </div>
+      <div class="d-flex gap-2">
+        <a href="{{ route('cart') }}" class="btn btn-primary btn-sm flex-fill">View Cart</a>
+        <a href="{{ url('delivery') }}" class="btn btn-success btn-sm flex-fill">Checkout</a>
+      </div>
     </div>
   </div>
 </div>
+
+
 <script>
   // Function to toggle cart visibility
   function toggleCart() {
@@ -348,7 +324,10 @@
         <div>
           <h5>${item.name}</h5>
           <p>Ksh${item.price} x ${item.quantity} = Ksh${itemTotal.toFixed(2)}</p>
-          <button onclick="removeFromCart(${item.id})">Remove</button>
+          <button class="remove-btn" onclick="removeFromCart(${item.id})">
+              <i class="fa fa-trash-o" style="color:white;"></i> Remove
+          </button>
+
         </div>
       `;
       cartItemsElement.appendChild(itemElement);
@@ -356,13 +335,27 @@
     
     // Update total and count
     cartTotalElement.textContent = parseFloat(total).toFixed(2);
-    cartCountElement.textContent = itemCount;
+    document.querySelectorAll('.cart-count, #cart-count').forEach(el => {
+    el.textContent = itemCount;
+});
+
   }
 
   // Load initial cart count when page loads
   document.addEventListener('DOMContentLoaded', function() {
     fetchCartData();
   });
+</script>
+<script>
+  function toggleCart() {
+    const backdrop = document.getElementById('cart-backdrop');
+    backdrop.style.display = (backdrop.style.display === 'flex') ? 'none' : 'flex';
+  }
+
+  function closeCartOnOutsideClick(event) {
+    // Close cart when clicking outside the cart box
+    document.getElementById('cart-backdrop').style.display = 'none';
+  }
 </script>
 
 

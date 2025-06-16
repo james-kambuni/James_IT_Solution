@@ -6,19 +6,22 @@ use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Mail\ContactReceived;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Service;
 
 class ContactController extends Controller
 {
     
-    public function create()
-    {
-        return view('contact');
-    }
+public function create()
+{
+    $blogServices = Service::where('type', 'blog')->latest()->get();
+    return view('contact', compact('blogServices'));
+}
   public function index()
 {
        $contacts = Contact::latest()->paginate(10);
     return view('admin.contacts.index', compact('contacts'));
 }
+
 
     public function store(Request $request)
 {

@@ -15,7 +15,7 @@ class UserOrderDetailsController extends Controller
                        ->latest()
                        ->get();
 
-        return view('user.index', compact('orders'));
+        return view('user.dashboard', compact('orders'));
     }
 
     public function show($id)

@@ -48,7 +48,7 @@ $('#loginModal').modal('show');
             product_name: button.data('product-name'),
             price: button.data('price'),
             image: button.data('image'),
-            quantity: button.data('quantity') || 1,
+            quantity: button.closest('.product-card, .cart-component').find('.quantity-input').val() || 1,
             _token: '{{ csrf_token() }}'
         };
 
@@ -58,12 +58,18 @@ $('#loginModal').modal('show');
             url: '{{ route("cart.add") }}',
             method: 'POST',
             data: data,
-            success: function (response) {
-                if (response.success) {
-                    updateCartHeader(response.cart_count, response.total);
-                    toastr.success(response.message);
-                }
-            },
+          success: function (response) {
+    if (response.success) {
+        updateCartHeader(response.cart_count, response.total);
+        toastr.success(response.message);
+
+        // ADD THIS TO FETCH LATEST CART STATE
+        if (typeof fetchAndDisplayCart === 'function') {
+            fetchAndDisplayCart(); // This updates the dropdown/sidecart content
+        }
+    }
+},
+
             error: function (xhr) {
                 toastr.error(xhr.responseJSON?.message || 'Error adding to cart');
             },
@@ -74,7 +80,7 @@ $('#loginModal').modal('show');
     });
 
     $('.quantity-plus').click(function () {
-        const input = $(this).siblings('.quantity-input');
+    const input = $(this).closest('.input-group').find('.quantity-input');
         input.val(parseInt(input.val()) + 1);
     });
 

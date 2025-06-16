@@ -17,10 +17,28 @@
 </div>
 
 <div class="mb-3">
+    <label>Description</label>
+    <input type="text" name="description" value="{{ old('description', $product->description ?? '') }}" class="form-control" required>
+</div>
+
+<div class="mb-3">
     <label>In Stock</label>
     <select name="in_stock" class="form-control">
         <option value="1" {{ (old('in_stock', $product->in_stock ?? '') == 1) ? 'selected' : '' }}>Yes</option>
         <option value="0" {{ (old('in_stock', $product->in_stock ?? '') == 0) ? 'selected' : '' }}>No</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="category_id">Category</label>
+    <select name="category_id" class="form-control">
+        <option value="">-- Select Category --</option>
+        @foreach($categories as $category)
+            <option value="{{ $category->id }}"
+                @if(old('category_id', $product->category_id ?? '') == $category->id) selected @endif>
+                {{ $category->name }}
+            </option>
+        @endforeach
     </select>
 </div>
 

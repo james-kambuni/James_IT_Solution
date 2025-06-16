@@ -69,4 +69,9 @@ public function store(Request $request)
 
         return redirect()->route('admin.services.index')->with('success', 'Service deleted.');
     }
+     public function show($id)
+    {
+        $service = Service::findOrFail($id);
+        return view('admin.services.show', compact('service'));
+    }
 }

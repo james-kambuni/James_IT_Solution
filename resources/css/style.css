@@ -1829,11 +1829,11 @@ section.dottad_star_bg {
 }
 
 .testimonial-container .testimonial-photo img {
-	border-radius: 100%;
+	border-radius: 0%;
 }
 
 .testimonial_qoute i {
-	color: #dfdfdf;
+	color: #090909;
 	font-size: 135px;
 }
 

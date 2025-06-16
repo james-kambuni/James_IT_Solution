@@ -1829,11 +1829,11 @@ section.dottad_star_bg {
 }
 
 .testimonial-container .testimonial-photo img {
-	border-radius: 100%;
+	border-radius: 50%;
 }
 
 .testimonial_qoute i {
-	color: #dfdfdf;
+	color: #0c0c0c;
 	font-size: 135px;
 }
 
@@ -3478,7 +3478,7 @@ footer ul.social_icons {
 
 .gross_layout::after {
 	position: absolute;
-	background: url(../images/it_service/dark_bg_img.png);
+	background: url(../images/it_service/dark_bg_img3.png);
 	width: 35%;
 	height: 100%;
 	right: 0;
@@ -3490,7 +3490,7 @@ footer ul.social_icons {
 
 .gross_layout::before {
 	position: absolute;
-	background: rgba(10, 139, 199, 0.8);
+	/* background: rgba(10, 139, 199, 0.8); */
 	width: 35%;
 	height: 100%;
 	right: 0;
@@ -4799,4 +4799,8 @@ footer ul.social_icons {
 .product_detail_side.detail_style1 {
 	margin-top: 35px;
 }
-
+/* for bootstrap pagination */
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+}

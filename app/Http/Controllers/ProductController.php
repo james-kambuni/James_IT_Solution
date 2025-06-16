@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+ use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -14,6 +15,7 @@ class ProductController extends Controller
         return view('products.index', compact('products'));
     }
 
+
     // For admin panel
     public function adminIndex()
     {
@@ -23,7 +25,9 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('admin.products.create');
+         $categories = Category::all();
+        return view('admin.products.create', compact('categories'));
+        
     }
 
     public function store(Request $request)
@@ -34,6 +38,7 @@ class ProductController extends Controller
         'price' => 'required|numeric',
         'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         'in_stock' => 'required|boolean',
+        'category_id' => 'required|exists:categories,id',
         ]);
 
          if ($request->hasFile('image')) {
@@ -48,7 +53,8 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        return view('admin.products.edit', compact('product'));
+        $categories = Category::all();
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, Product $product)
@@ -58,6 +64,7 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'image' => 'nullable|image',
             'in_stock' => 'required|boolean',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         if ($request->hasFile('image')) {
@@ -65,6 +72,8 @@ class ProductController extends Controller
         }
 
         $product->update($data);
+        $product->category_id = $request->category_id;
+
 
         return redirect()->route('admin.products.index')->with('success', 'Product updated successfully.');
     }
@@ -74,4 +83,5 @@ class ProductController extends Controller
         $product->delete();
         return back()->with('success', 'Product deleted successfully.');
     }
+   
 }

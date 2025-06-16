@@ -5,7 +5,7 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title">Welcome <span style="color: blue;">{{ auth()->user()->name }} </span> Admin Panel</h5>
+        <h5 class="card-title">Welcome <span style="color: blue;">{{ auth()->user()->name }} </span></h5>
         <p class="card-text">Be your own boss. Manage users now!</p>
         
         <div class="row mt-4">

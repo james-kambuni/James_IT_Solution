@@ -31,5 +31,7 @@
             @endforelse
         </tbody>
     </table>
-    {{ $contacts->links() }}
+    <div class="d-flex justify-content-center mt-4">
+         {{ $contacts->links() }}
+    </div>
 @endsection

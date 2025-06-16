@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="css/colors1.css" />
 <!-- custom css -->
 <link rel="stylesheet" href="css/custom.css" />
+<link rel="stylesheet" href="css/cart.css" />
 <!-- wow Animation css -->
 <link rel="stylesheet" href="css/animate.css" />
 <!-- zoom effect -->
@@ -34,65 +35,7 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
-      <style>
-        /* Shopping Cart Styles */
-        #shopping-cart {
-          position: fixed;
-          top: 100px;
-          right: 20px;
-          width: 350px;
-          background: white;
-          border: 1px solid #ddd;
-          padding: 15px;
-          box-shadow: 0 0 10px rgba(0,0,0,0.1);
-          z-index: 1000;
-          display: none;
-        }
-        
-        .cart-item {
-          display: flex;
-          margin-bottom: 10px;
-          padding-bottom: 10px;
-          border-bottom: 1px solid #eee;
-        }
-        
-        .cart-item img {
-          margin-right: 10px;
-        }
-        
-        .cart-header {
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 15px;
-        }
-        
-        .cart-total {
-          font-weight: bold;
-          margin-top: 10px;
-          text-align: right;
-        }
-        
-        #cart-icon {
-          position: fixed;
-          top: 150px;
-          right: 20px;
-          background: #333;
-          color: white;
-          padding: 10px 15px;
-          border-radius: 50%;
-          cursor: pointer;
-          z-index: 999;
-        }
-        
-        #cart-count {
-          background: red;
-          color: white;
-          border-radius: 50%;
-          padding: 2px 6px;
-          font-size: 12px;
-          margin-left: 5px;
-        }
-      </style>
+      
 </head>
 <body id="default_theme" class="it_serv_shopping_cart shopping-cart">
 <!-- loader -->
@@ -150,8 +93,8 @@
                 <div class="media-body">
                     <h4 class="media-heading"><a href="#">{{ $item->product->name }}</a></h4>
                     <span>Status: </span>
-                    <span class="{{ $item->product->status == 1 ? 'text-success' : 'text-danger' }}">
-    {{ $item->product->status == 1 ? 'In Stock' : 'Out of Stock' }}
+                <span class="{{ $item->product->status == 1 ? 'text-danger' : 'text-success' }}">
+    {{ $item->product->status == 0 ? 'In Stock' : 'Out of Stock' }}
 </span>
 
                 </div>
@@ -186,6 +129,7 @@
               <tr class="cart-form">
                 <td class="actions"><div class="coupon">
                   </div>
+                
                   <input class="button" name="update_cart" value="Update cart" disabled="" type="submit">
                 </td>
               </tr>
@@ -214,10 +158,8 @@
               <tr>
                 <td><button type="button" class="button" onclick="window.location.href=''">Continue Shopping</button></td>
                 <td>
-  <form action="{{ route('admin.orders.checkout') }}" method="POST">
-    @csrf
-    <button type="submit" class="button">Checkout</button>
-  </form>
+  <a href="{{ route('orders.delivery') }}" class="button">Checkout</a>
+
 </td>
 
               </tr>
@@ -269,25 +211,47 @@
 <!-- Cart functionality -->
 
 
+<!-- Cart Icon Button (Trigger) -->
 <div id="cart-icon" onclick="toggleCart()">
   🛒 <span id="cart-count">0</span>
 </div>
 
-<!-- Shopping Cart -->
-<div id="shopping-cart">
-  <div class="cart-header">
-    <h3>Your Cart</h3>
-    <button style="background-color: red;" onclick="toggleCart()">close</button>
-  </div>
-  <div id="cart-items"></div>
-  <div class="cart-total">
-    Total: Ksh<span id="cart-total">0.00</span>
-    <div style="margin-top: 10px;">
-      <a href="{{ route('cart') }}" class="btn btn-primary">View Cart</a>
-      <a href="{{ route('checkout') }}" class="btn btn-success">Checkout</a>
+<!-- Cart Modal -->
+<!-- Cart Backdrop -->
+<div id="cart-backdrop" onclick="closeCartOnOutsideClick(event)">
+  <!-- Cart Modal -->
+  <div id="shopping-cart" onclick="event.stopPropagation();">
+    <div class="cart-header">
+      <h5 class="mb-0">🛒 My Cart</h5>
+      <button class="close-btn" onclick="toggleCart()"><i class="fa fa-times"></i></button>
+    </div>
+    <hr>
+
+    <div id="cart-items">
+      <div class="cart-item">
+        <img src="https://via.placeholder.com/60" alt="Sample">
+        <div>
+          <div><strong>Sample Product</strong></div>
+          <div>Ksh 1000 x 1</div>
+        </div>
+        <button class="btn btn-outline-danger btn-sm ms-2">Remove</button>
+      </div>
+    </div>
+
+    <div class="cart-total mt-3">
+      <div class="d-flex justify-content-between mb-3">
+        <strong>Total:</strong>
+        <span>Ksh <span id="cart-total">1000.00</span></span>
+      </div>
+      <div class="d-flex gap-2">
+        <a href="{{ route('cart') }}" class="btn btn-primary btn-sm flex-fill">View Cart</a>
+        <a href="{{ route('checkout') }}" class="btn btn-success btn-sm flex-fill">Checkout</a>
+      </div>
     </div>
   </div>
 </div>
+
+
 <script>
   // Function to toggle cart visibility
   function toggleCart() {
@@ -312,25 +276,6 @@
     }
   }
 
-  async function removeFromCart(itemId) {
-  try {
-    const response = await fetch(`/cart/remove/${itemId}`, {
-      method: 'DELETE',
-      headers: {
-        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-      }
-    });
-
-    const result = await response.json();
-
-    if (result.success) {
-      fetchCartData(); // Refresh cart
-    }
-  } catch (error) {
-    console.error('Error removing item:', error);
-  }
-}
-
   // Function to update cart display
   function updateCartDisplay(items, total, itemCount) {
     const cartItemsElement = document.getElementById('cart-items');
@@ -353,7 +298,7 @@
         <div>
           <h5>${item.name}</h5>
           <p>Ksh${item.price} x ${item.quantity} = Ksh${itemTotal.toFixed(2)}</p>
-          <button onclick="removeFromCart(${item.id})">Remove</button>
+          <button class="remove-btn" onclick="removeFromCart(${item.id})"><i class="fa fa-trash-o"style= color:white></i> Remove</button>
         </div>
       `;
       cartItemsElement.appendChild(itemElement);
@@ -368,6 +313,17 @@
   document.addEventListener('DOMContentLoaded', function() {
     fetchCartData();
   });
+</script>
+<script>
+  function toggleCart() {
+    const backdrop = document.getElementById('cart-backdrop');
+    backdrop.style.display = (backdrop.style.display === 'flex') ? 'none' : 'flex';
+  }
+
+  function closeCartOnOutsideClick(event) {
+    // Close cart when clicking outside the cart box
+    document.getElementById('cart-backdrop').style.display = 'none';
+  }
 </script>
 </body>
 </html>

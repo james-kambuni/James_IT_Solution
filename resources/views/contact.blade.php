@@ -108,26 +108,25 @@
         <div class="row">
           <div class="full">
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 adress_cont margin_bottom_30">
-              <h4>Address One</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. sed do eiusmod tempor.</p>
+              <h4>Our Address</h4>
+              <p>We are located at Zimmermann, Kasarani opposite St. Teressa Cathilic Church</p>
               <div class="information_bottom left-side margin_bottom_20_all">
                 <div class="icon_bottom"> <i class="fa fa-road" aria-hidden="true"></i> </div>
                 <div class="info_cont">
-                  <h4>Lorem Ipsum is simply dummy text..</h4>
-                  <p>Melbourne Australia</p>
+                  <p>P.O Box 111-00100</p>
                 </div>
               </div>
               <div class="information_bottom left-side margin_bottom_20_all">
                 <div class="icon_bottom"> <i class="fa fa-user" aria-hidden="true"></i> </div>
                 <div class="info_cont">
-                  <h4>0011 234 56789</h4>
-                  <p>Mon-Fri 8:30am-6:30pm</p>
+                  <h4>+254-700-369-827</h4>
+                  <p>Mon-Sat 8:30am-6:30pm</p>
                 </div>
               </div>
               <div class="information_bottom left-side">
                 <div class="icon_bottom"> <i class="fa fa-envelope" aria-hidden="true"></i> </div>
                 <div class="info_cont">
-                  <h4>Example@gmail.com</h4>
+                  <h4>vkambuni@gmail.com</h4>
                   <p>24/7 online support</p>
                 </div>
               </div>
@@ -178,14 +177,15 @@
   </div>
 </div>
 <!-- section -->
+<!-- section -->
 <div class="section padding_layout_1 testmonial_section white_fonts">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="full">
           <div class="main_heading text_align_left">
-            <h2 style="text-transform: none;">What Clients Say?</h2>
-            <p class="large">Here are testimonials from clients..</p>
+            <h2 style="text-transform: none;">Some of our services?</h2>
+            <p class="large">We offers the following services among many more others...</p>
           </div>
         </div>
       </div>
@@ -202,37 +202,25 @@
             </ul>
             <!-- The slideshow -->
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="testimonial-container">
-                  <div class="testimonial-content"> You guys rock! Thank you for making it painless, pleasant and most of all hassle free! I wish I would have thought of it first. 
-                    I am really satisfied with my first laptop service. </div>
-                  <div class="testimonial-photo"> <img src="images/it_service/client1.jpg" class="img-responsive" alt="#" width="150" height="150"> </div>
-                  <div class="testimonial-meta">
-                    <h4>Maria Anderson</h4>
-                    <span class="testimonial-position">CFO, Tech NY</span> </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="testimonial-container">
-                  <div class="testimonial-content"> You guys rock! Thank you for making it painless, pleasant and most of all hassle free! I wish I would have thought of it first. 
-                    I am really satisfied with my first laptop service. </div>
-                  <div class="testimonial-photo"> <img src="images/it_service/client2.jpg" class="img-responsive" alt="#" width="150" height="150"> </div>
-                  <div class="testimonial-meta">
-                    <h4>Maria Anderson</h4>
-                    <span class="testimonial-position">CFO, Tech NY</span> </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="testimonial-container">
-                  <div class="testimonial-content"> You guys rock! Thank you for making it painless, pleasant and most of all hassle free! I wish I would have thought of it first. 
-                    I am really satisfied with my first laptop service. </div>
-                  <div class="testimonial-photo"> <img src="images/it_service/client3.jpg" class="img-responsive" alt="#" width="150" height="150"> </div>
-                  <div class="testimonial-meta">
-                    <h4>Maria Anderson</h4>
-                    <span class="testimonial-position">CFO, Tech NY</span> </div>
-                </div>
-              </div>
-            </div>
+  @foreach($blogServices as $index => $service)
+    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+      <div class="testimonial-container">
+        <div class="testimonial-meta">
+          <h4>{{ $service->title }}</h4>
+          <span class="testimonial-position">{{ $service->subtitle ?? 'Blog Service' }}</span>
+        </div>
+        
+        <div class="testimonial-photo">
+          <img src="{{ asset('storage/' . $service->image) }}" class="img-responsive" alt="{{ $service->title }}" width="150" height="150">
+        </div>
+        <div class="testimonial-content">
+          {{ Str::limit($service->description, 200) }}
+        </div>
+      </div>
+    </div>
+  @endforeach
+</div>
+
           </div>
         </div>
       </div>
@@ -252,10 +240,10 @@
           <div class="contact_us_section">
             <div class="call_icon"> <img src="images/it_service/phone_icon.png" alt="#" /> </div>
             <div class="inner_cont">
-              <h2>REQUEST A FREE QUOTE</h2>
-              <p>Get answers and advice from people you want it from.</p>
+              <h2>Contact us today!</h2>
+              <p>We are ready to serve you</p>
             </div>
-            <div class="button_Section_cont"> <a class="btn dark_gray_bt" href="it_contact.html">Contact us</a> </div>
+            <div class="button_Section_cont"> <a class="btn dark_gray_bt" href="{{ url('/contact') }}">Contact us</a> </div>
           </div>
         </div>
       </div>
@@ -263,25 +251,7 @@
   </div>
 </div>
 <!-- end section -->
-<!-- section -->
-<div class="section padding_layout_1" style="padding: 50px 0;">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="full">
-          <ul class="brand_list">
-            <li><img src="images/it_service/brand_icon1.png" alt="#" /></li>
-            <li><img src="images/it_service/brand_icon2.png" alt="#" /></li>
-            <li><img src="images/it_service/brand_icon3.png" alt="#" /></li>
-            <li><img src="images/it_service/brand_icon4.png" alt="#" /></li>
-            <li><img src="images/it_service/brand_icon5.png" alt="#" /></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end section -->
+
 <!-- Modal -->
 <div class="modal fade" id="search_bar" role="dialog">
   <div class="modal-dialog">

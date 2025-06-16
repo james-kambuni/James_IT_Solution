@@ -7,4 +7,6 @@
         @csrf
         @include('admin.products.form')
     </form>
+  
+
 @endsection
